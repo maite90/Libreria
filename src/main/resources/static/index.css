@@ -1,0 +1,36 @@
+body{
+    background-image: url('fondo.png');
+    background-size: cover;
+    background-repeat : repeat-y;
+    background-position: inherit;    
+}
+
+h1{    
+    text-align: center;
+    color: white;   
+    font-size: 50pt;
+    margin-top: 100px;
+}
+
+h2{ 
+    text-align: center;
+    font-size: 15pt;
+    color: white;
+}
+
+.lnr{
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.05em;
+}
+
+#gifChica{
+    padding-left: 800px;
+}
+
+footer{
+   color: white;
+    font-size: smaller;
+    margin-top: 40px;    
+}

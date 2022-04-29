@@ -1,0 +1,22 @@
+body{
+    background-image: url('fondo.png');
+    background-size: cover;
+    background-repeat : repeat-y;
+      
+}
+
+header{
+    color: white;   
+    margin-top: 40px;
+}
+
+label{
+    color: white;
+}
+
+footer{
+   color: white;
+   text-align: center;
+   font-size: smaller;
+   margin-top: 100px;    
+}
