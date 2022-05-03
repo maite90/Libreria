@@ -38,22 +38,24 @@
     </div>
 
 
-    <form action="/libro/registro" method="POST" enctype="multipart/form-data">
+    <form action="/libro/modificarPost" method="POST" enctype="multipart/form-data">
 
-    <label class="fw-bold">ISBN</label>
-    <input type="number" class="form-control" name="isbn" id="isbn" placeholder="Ingresá el número de ISBN del libro" th:value="${isbn}"/>
+    <input type="hidden" th:value="${libro.id}" name="id">
+                            
+    <label class="fw-bold">nuevo ISBN</label>
+    <input type="number" class="form-control" name="isbnNuevo" id="isbn" placeholder="Ingresá el número de ISBN del libro" th:value="${isbnNuevo}"/>
 
-    <label class="fw-bold">Titulo</label>
-    <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ingresá el título del libro" th:value="${titulo}"/>
+    <label class="fw-bold">Titulo nuevo</label>
+    <input type="text" class="form-control" name="tituloNuevo" id="titulo" placeholder="Ingresá el título del libro" th:value="${tituloNuevo}"/>
 
-    <label class="fw-bold">Año de publicación</label>
-    <input type="number" class="form-control" name="anio" id="anio" placeholder="Ingresá el año de publicación del libro" th:value="${anio}"/>
+    <label class="fw-bold">NuevoAño de publicación</label>
+    <input type="number" class="form-control" name="anioNuevo" id="anio" placeholder="Ingresá el año de publicación del libro" th:value="${anioNuevo}"/>
 
     <label class="fw-bold">Cantidad de ejemplares</label>
-    <input type="number" class="form-control" name="ejemplares" id="ejemplares" placeholder="Ingresá el número de ejemplares" th:value="${ejemplares}"/>
+    <input type="number" class="form-control" name="ejemplaresNuevo" id="ejemplares" placeholder="Ingresá el número de ejemplares" th:value="${ejemplaresNuevo}"/>
 
     <label class="fw-bold">Ejemplares prestados? </label>
-    <input type="number" class="form-control" name="ejemplaresPrestados" id="ejemplaresPrestados" placeholder="Ingresá el número de ejemplares prestados" th:value="${ejemplaresPrestados}"/>
+    <input type="number" class="form-control" name="ejemplaresPrestadosNuevo" id="ejemplaresPrestados" placeholder="Ingresá el número de ejemplares prestados" th:value="${ejemplaresPrestadosNuevo}"/>
 
     <label class="fw-bold">Autor</label>
     <select name="autor" class="form-control" aria-label="Default select example">

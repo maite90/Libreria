@@ -36,7 +36,7 @@
             <td th:text="${editorial.nombre}">Nombre</td> 
             <td th:if="${editorial.alta}==false"><a th:href="@{/editorial/alta (id=${editorial.id})}"><button type="button" class="btn btn-outline-primary btn-sm">Dar de alta</button></a></td>
             <td th:if="${editorial.alta}==true"><a th:href="@{/editorial/baja (id=${editorial.id})}"><button type="button" class="btn btn-outline-danger btn-sm">Dar de baja</button></a></td>
-            <td><a class="btn btn-outline-light btn-sm" href="/editorial/modificar" role="button">Editar</a></td>              
+            <td><a class="btn btn-outline-light btn-sm" th:href="@{/editorial/modificarGet (id=${editorial.id})}" role="button">Editar</a></td>              
             </tr>
         </tbody>        
         </table>

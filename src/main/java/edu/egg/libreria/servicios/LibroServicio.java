@@ -22,8 +22,7 @@ public class LibroServicio {
    
         validar(isbn, titulo, anio, ejemplares, ejemplaresPrestados, autor, editorial);
         
-        Libro libro = new Libro();
-        
+        Libro libro = new Libro();        
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
         libro.setAnio(anio);

@@ -3,8 +3,10 @@ package edu.egg.libreria.controladores;
 
 import edu.egg.libreria.entidades.Autor;
 import edu.egg.libreria.exepciones.ExcepcionPropia;
+import edu.egg.libreria.repositorios.AutorRepositorio;
 import edu.egg.libreria.servicios.AutorServicio;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +22,9 @@ public class AutorControlador {
    
     @Autowired
     private AutorServicio autorServicio;
+    
+    @Autowired
+    private AutorRepositorio autorRepositorio;
 
     @GetMapping("/registro")
     public String formulario(ModelMap modelo) {
@@ -49,25 +54,28 @@ public class AutorControlador {
     }
     
     
-    @GetMapping("/modificar")
-    public String modificar(ModelMap modelo){
+    @GetMapping("/modificarGet")
+    public String modificar(ModelMap modelo, String id){
     
-    List<Autor> autor = autorServicio.mostrarTodos();
+    Optional<Autor> respuesta = autorRepositorio.findById(id);
+    if(respuesta.isPresent()){
+    Autor autor = respuesta.get();
     modelo.addAttribute("autor", autor);
-        
-    return "autor";
+    modelo.put("id", autor.getId());   
+    }        
+    return "autorModificar";
     }
     
-    @PostMapping("/modificar")
-    public String modificar(ModelMap modelo,String id, @RequestParam(defaultValue = "", required = true) String nombre ){
+    @PostMapping("/modificarPost")
+    public String modificar(ModelMap modelo,String id, @RequestParam(defaultValue = "", required = true) String nombreNuevo ){
        
         try{
-            autorServicio.modificar(id, nombre);
+            autorServicio.modificar(id, nombreNuevo);
             modelo.put("exito", "Autor editado con éxito");
         } catch (Exception e) {            
             e.printStackTrace();
             modelo.put("error", "Falló la edición del autor :( ");
-            modelo.put("nombre", nombre);
+            modelo.put("nombre", nombreNuevo);
         }
         return "autor";
     }

@@ -50,7 +50,7 @@
             <td><span th:text="${libro.editorial.nombre}"> Editorial</span></td>
             <td th:if="${libro.alta}==false"><a th:href="@{/libro/alta (id=${libro.id})}"><button type="button" class="btn btn-outline-primary btn-sm">Dar de alta</button></a></td>
             <td th:if="${libro.alta}==true"><a th:href="@{/libro/baja (id=${libro.id})}"><button type="button" class="btn btn-outline-danger btn-sm">Dar de baja</button></a></td>
-            <td><a class="btn btn-outline-light btn-sm" href="/libro/modificar" role="button">Editar</a></td>              
+            <td><a class="btn btn-outline-light btn-sm" th:href="@{/libro/modificarGet (id=${libro.id})}" role="button">Editar</a></td>              
             </tr>
         </tbody>
         </table>

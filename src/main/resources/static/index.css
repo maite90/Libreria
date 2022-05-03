@@ -1,21 +1,31 @@
 body{
     background-image: url('fondo.png');
-    background-size: cover;
+    background-size: contain;
     background-repeat : repeat-y;
-    background-position: inherit;    
+    background-position: top;    
 }
 
 h1{    
+    font-family: 'Meow Script', cursive;
     text-align: center;
     color: white;   
-    font-size: 50pt;
-    margin-top: 100px;
+    font-size: 100pt;
+    margin-top: 50px;
 }
 
 h2{ 
+   font-family: 'Klee One', cursive;
     text-align: center;
     font-size: 15pt;
     color: white;
+}
+
+.card{    
+    width:  300px;
+}
+
+a{
+    font-family: 'Klee One', cursive;    
 }
 
 .lnr{
@@ -27,6 +37,45 @@ h2{
 
 #gifChica{
     padding-left: 800px;
+}
+
+div{
+    font-family: 'Klee One', cursive;   
+    font-size: 12pt;
+    color:grey;
+}
+
+#p1{
+    background-color: white;
+    padding-left: 100px;           
+}
+
+#doby{
+    position: absolute;
+    padding-left: 800px;
+    padding-top: 50px;
+}
+
+#p2{
+    background-color: white;
+    padding-left: 800px;    
+}
+
+#alicia{
+    position: absolute;
+    padding-left: 150px;
+    padding-top: 30px;
+}
+
+#p3{
+    background-color: white;
+    padding-left: 100px;    
+}
+
+#principito{
+    position: absolute;
+    padding-left: 800px;
+    padding-top: 10px;
 }
 
 footer{

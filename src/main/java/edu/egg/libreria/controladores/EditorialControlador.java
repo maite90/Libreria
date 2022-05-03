@@ -3,8 +3,10 @@ package edu.egg.libreria.controladores;
 
 import edu.egg.libreria.entidades.Editorial;
 import edu.egg.libreria.exepciones.ExcepcionPropia;
+import edu.egg.libreria.repositorios.EditorialRepositorio;
 import edu.egg.libreria.servicios.EditorialServicio;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +21,10 @@ public class EditorialControlador {
        
     @Autowired
     private EditorialServicio editorialServicio;
+    
+    @Autowired
+    private EditorialRepositorio editorialRepositorio;
+    
 
     @GetMapping("/registro")
     public String formulario(ModelMap modelo) {
@@ -47,25 +53,30 @@ public class EditorialControlador {
         return "listadoEditoriales";
     }
     
-    @GetMapping("/modificar")
-    public String modificar(ModelMap modelo){
-    
-    List<Editorial> editorial = editorialServicio.mostrarTodos();
-    modelo.addAttribute("editorial", editorial);
-        
-    return "editorial";
+    @GetMapping("/modificarGet")
+    public String modificar(ModelMap modelo, String id){
+
+     Optional<Editorial> respuesta = editorialRepositorio.findById(id);    
+     if (respuesta.isPresent()) {
+     Editorial editorial = respuesta.get();
+     modelo.addAttribute("editorial", editorial);   
+     modelo.put("id", editorial.getId());    
+     }        
+     return "editorialModificar";
     }
     
-    @PostMapping("/modificar")
-    public String modificar(ModelMap modelo,String id, @RequestParam(defaultValue = "", required = true) String nombre ){
+    
+    @PostMapping("/modificarPost")
+    public String modificar(ModelMap modelo,String id, @RequestParam(defaultValue = "", required = true) String nombreNuevo ){
        
         try{
-            editorialServicio.modificar(id, nombre);
+            editorialServicio.modificar(id, nombreNuevo);
             modelo.put("exito", "Editorial editada con éxito");
+            
         } catch (Exception e) {            
             e.printStackTrace();
             modelo.put("error", "Falló la edición de la editorial :( ");
-            modelo.put("nombre", nombre);
+            modelo.put("nombre", nombreNuevo);
         }
         return "editorial";
     }
