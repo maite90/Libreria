@@ -42,7 +42,7 @@ public class LibroServicio {
         
         Optional<Libro> respuesta = libroRepositorio.findById(id);
         if (respuesta.isPresent()) {
-        Libro libro = new Libro();
+        Libro libro = respuesta.get();
         
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
