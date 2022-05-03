@@ -86,14 +86,14 @@ public class LibroControlador {
     @GetMapping("/modificarGet")
     public String modificar(ModelMap modelo, String id){
     
+    Optional<Libro> respuesta = libroRepositorio.findById(id);
+        
     List<Autor> autor = autorServicio.mostrarTodos();
     modelo.addAttribute("autores", autor);
     
     List<Editorial> editorial = editorialServicio.mostrarTodos();
     modelo.addAttribute("editoriales", editorial);
       
-        
-    Optional<Libro> respuesta = libroRepositorio.findById(id);
    if (respuesta.isPresent()) {
        Libro libro = respuesta.get();
        modelo.addAttribute("libro", libro);
@@ -103,10 +103,10 @@ public class LibroControlador {
     }
     
     @PostMapping("/modificarPost")
-    public String modificar(ModelMap modelo,String id, @RequestParam Long isbnNuevo, @RequestParam String tituloNuevo, @RequestParam Integer anioNuevo, @RequestParam Integer ejemplaresNuevo, @RequestParam Integer ejemplaresPrestadosNuevo, @RequestParam Autor autor, @RequestParam Editorial editorial){
+    public String modificar(ModelMap modelo,String id, @RequestParam Long isbnNuevo, @RequestParam String tituloNuevo, @RequestParam Integer anioNuevo, @RequestParam Integer ejemplaresNuevo, @RequestParam Integer ejemplaresPrestadosNuevo, @RequestParam Autor autorNuevo, @RequestParam Editorial editorialNuevo){
       
         try{
-            libroServicio.modificar(id, isbnNuevo, tituloNuevo, anioNuevo, ejemplaresNuevo, ejemplaresPrestadosNuevo, autor, editorial);
+            libroServicio.modificar(id, isbnNuevo, tituloNuevo, anioNuevo, ejemplaresNuevo, ejemplaresPrestadosNuevo, autorNuevo, editorialNuevo);
             modelo.put("exito", "Libro editado con éxito");
         } catch (Exception e) {            
             e.printStackTrace();
@@ -118,7 +118,6 @@ public class LibroControlador {
             modelo.put("ejemplaresPrestados", ejemplaresPrestadosNuevo);
             modelo.put("autores", autorServicio.mostrarTodos());
             modelo.put("editoriales", editorialServicio.mostrarTodos());
-           
         }
         return "libro";
     }

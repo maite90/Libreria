@@ -43,28 +43,28 @@
     <input type="hidden" th:value="${libro.id}" name="id">
                             
     <label class="fw-bold">nuevo ISBN</label>
-    <input type="number" class="form-control" name="isbnNuevo" id="isbn" placeholder="Ingresá el número de ISBN del libro" th:value="${isbnNuevo}"/>
+    <input type="number" class="form-control" name="isbnNuevo"/>
 
     <label class="fw-bold">Titulo nuevo</label>
-    <input type="text" class="form-control" name="tituloNuevo" id="titulo" placeholder="Ingresá el título del libro" th:value="${tituloNuevo}"/>
+    <input type="text" class="form-control" name="tituloNuevo"/>
 
     <label class="fw-bold">NuevoAño de publicación</label>
-    <input type="number" class="form-control" name="anioNuevo" id="anio" placeholder="Ingresá el año de publicación del libro" th:value="${anioNuevo}"/>
+    <input type="number" class="form-control" name="anioNuevo"/>
 
     <label class="fw-bold">Cantidad de ejemplares</label>
-    <input type="number" class="form-control" name="ejemplaresNuevo" id="ejemplares" placeholder="Ingresá el número de ejemplares" th:value="${ejemplaresNuevo}"/>
+    <input type="number" class="form-control" name="ejemplaresNuevo"/>
 
     <label class="fw-bold">Ejemplares prestados? </label>
-    <input type="number" class="form-control" name="ejemplaresPrestadosNuevo" id="ejemplaresPrestados" placeholder="Ingresá el número de ejemplares prestados" th:value="${ejemplaresPrestadosNuevo}"/>
+    <input type="number" class="form-control" name="ejemplaresPrestadosNuevo"/>
 
     <label class="fw-bold">Autor</label>
-    <select name="autor" class="form-control" aria-label="Default select example">
+    <select name="autorNuevo" class="form-control" aria-label="Default select example">
     <option selected>Seleccioná el autor</option>
     <option th:each="autor: ${autores}" th:value="${autor.id}" th:text="${autor.nombre}"></option>
     
     </select>
     <label class="fw-bold">Editorial</label>
-    <select name="editorial" class="form-control" aria-label="Default select example">
+    <select name="editorialNuevo" class="form-control" aria-label="Default select example">
     <option selected>Seleccioná la editorial</option>
     <option th:each="editorial: ${editoriales}" th:value="${editorial.id}" th:text="${editorial.nombre}"></option>
     </select>
